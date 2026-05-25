@@ -1,2 +1,3 @@
-# ttml2lrc
-Convert TTML files from Apple Music to LRC.
+# TTML2LRC
+
+Convert TTML lyrics from Apple Music to LRC.
