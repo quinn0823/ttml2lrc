@@ -1,0 +1,9 @@
+[project]
+name = "ttml2lrc"
+version = "0.1.0"
+description = "Convert TTML lyrics from Apple Music to LRC."
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "gamdl>=3.7.1",
+]
