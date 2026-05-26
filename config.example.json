@@ -1,0 +1,15 @@
+{
+    "use_clipboard": false,
+    "input_file": "links.txt",
+    "gamdl_command": [
+        "gamdl"
+    ],
+    "gamdl_args": [
+        "--synced-lyrics-format",
+        "ttml",
+        "--synced-lyrics-only"
+    ],
+    "apple_music_dir": "Apple Music",
+    "output_dir": "Output",
+    "ttml_archive_dir": "Archive"
+}
