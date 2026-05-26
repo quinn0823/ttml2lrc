@@ -7,7 +7,9 @@
     "gamdl_args": [
         "--synced-lyrics-format",
         "ttml",
-        "--synced-lyrics-only"
+        "--synced-lyrics-only",
+        "--song-codec-priority",
+        "aac-web"
     ],
     "apple_music_dir": "Apple Music",
     "output_dir": "Output",
