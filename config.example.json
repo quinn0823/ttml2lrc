@@ -1,9 +1,7 @@
 {
     "use_clipboard": false,
     "input_file": "links.txt",
-    "gamdl_command": [
-        "gamdl"
-    ],
+    "gamdl_command": ["gamdl"],
     "gamdl_args": [
         "--synced-lyrics-format",
         "ttml",
