@@ -57,6 +57,35 @@ def format_lrc_time(milliseconds: int) -> str:
     return f"[{minutes:02d}:{seconds:02d}.{hundredths:02d}]"
 
 
+def _paragraph_text(paragraph: ET.Element) -> str:
+    parts = []
+
+    if paragraph.text and not paragraph.text.isspace():
+        parts.append(paragraph.text)
+
+    for span in paragraph:
+        if span.text:
+            parts.append(span.text)
+
+        tail = span.tail or ""
+        if not tail:
+            continue
+        if not tail.isspace():
+            parts.append(tail)
+        elif "\n" not in tail and "\r" not in tail:
+            parts.append(" ")
+        else:
+            lines = tail.splitlines()
+            indentation = lines[-1] if lines[-1].isspace() else ""
+            if any(
+                line.startswith(indentation) and len(line) > len(indentation)
+                for line in lines[1:-1]
+            ):
+                parts.append(" ")
+
+    return "".join(parts).strip()
+
+
 # ------------------------
 # TTML -> LRC 转换
 # ------------------------
@@ -87,7 +116,7 @@ def convert_ttml_to_lrc(ttml_path: Path) -> list[str]:
         for p in div.findall("tt:p", ns):
             begin = parse_ttml_time(p.attrib["begin"])
             end = parse_ttml_time(p.attrib["end"])
-            text = (p.text or "").strip()
+            text = _paragraph_text(p)
 
             items.append({
                 "type": "line",
